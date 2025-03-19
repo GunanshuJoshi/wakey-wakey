@@ -1,0 +1,22 @@
+name: Keep Render Apps Alive
+
+on:
+  schedule:
+    - cron: '*/14 * * * *' # Runs every 14 minutes
+
+jobs:
+  keep_alive:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Wakey Wakey for gemini-ai-bnxm API
+      run: |
+        curl --fail-with-body https://gemini-ai-bnxm.onrender.com/api/test
+
+    - name: Wake up gemini-ai-frontend
+      run: |
+        curl --fail-with-body https://gemini-ai-frontend.onrender.com/
+
+    - name: Wake up gj-chat-app
+      run: |
+        curl --fail-with-body https://gj-chat-app.onrender.com/

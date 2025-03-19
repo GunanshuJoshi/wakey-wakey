@@ -9,14 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Wakey Wakey for gemini-ai-bnxm API
+    - name: Wake up Render Apps (No Wait)
       run: |
-        curl --fail-with-body https://gemini-ai-bnxm.onrender.com/api/test
-
-    - name: Wake up gemini-ai-frontend
-      run: |
-        curl --fail-with-body https://gemini-ai-frontend.onrender.com/
-
-    - name: Wake up gj-chat-app
-      run: |
-        curl --fail-with-body https://gj-chat-app.onrender.com/
+        #!/bin/bash
+        curl --fail-with-body https://gemini-ai-bnxm.onrender.com/api/test &
+        curl --fail-with-body https://gemini-ai-frontend.onrender.com/ &
+        curl --fail-with-body https://gj-chat-app.onrender.com/ &
